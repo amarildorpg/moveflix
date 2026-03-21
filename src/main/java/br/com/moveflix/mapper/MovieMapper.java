@@ -14,7 +14,7 @@ import java.util.List;
 @UtilityClass
 public class MovieMapper {
     public static Movie toMovie(MovieRequest request) {
-        List<Category> categories = request.categoria()
+        List<Category> categories = request.categories()
                 .stream()
                 .map(categoryId -> Category.builder().id(categoryId).build())
                 .toList();
