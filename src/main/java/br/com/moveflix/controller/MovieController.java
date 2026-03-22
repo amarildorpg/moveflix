@@ -33,7 +33,7 @@ public class MovieController {
 
     @GetMapping("/{id}")
     public ResponseEntity<MovieResponse> findById(@PathVariable Long id) {
-        return movieService.finById(id)
+        return movieService.findById(id)
                     .map(movie -> ResponseEntity.ok(MovieMapper.toMovieResponse(movie)))
                     .orElse(ResponseEntity.notFound().build());
     }
@@ -51,6 +51,15 @@ public class MovieController {
                 .stream()
                 .map(MovieMapper::toMovieResponse)
                 .toList());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        if (movieService.findById(id).isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        movieService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

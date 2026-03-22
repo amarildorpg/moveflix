@@ -24,11 +24,15 @@ public class MovieService {
         return movieRepository.save(movie);
     }
 
+    public void delete(Long movieId) {
+        movieRepository.deleteById(movieId);
+    }
+
     public List<Movie> findAll() {
         return movieRepository.findAll();
     }
 
-    public Optional<Movie> finById(Long id) {
+    public Optional<Movie> findById(Long id) {
         return movieRepository.findById(id);
     }
 
