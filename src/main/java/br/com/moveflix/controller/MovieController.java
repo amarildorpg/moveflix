@@ -37,4 +37,12 @@ public class MovieController {
                     .map(movie -> ResponseEntity.ok(MovieMapper.toMovieResponse(movie)))
                     .orElse(ResponseEntity.notFound().build());
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<MovieResponse> atualizar(@RequestBody MovieRequest request, @PathVariable Long id) {
+        return movieService.update(id, MovieMapper.toMovie(request))
+                .map(movie -> ResponseEntity.ok(MovieMapper.toMovieResponse(movie)))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }
