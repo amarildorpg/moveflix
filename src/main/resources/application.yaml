@@ -14,3 +14,7 @@ spring:
 
   flyway:
     enabled: true
+
+movieFlix:
+  security:
+    secret: "lO5qTcImQ0DvxXyo8InsytNmjjSjz4Ao+asPFRdcfEE="
