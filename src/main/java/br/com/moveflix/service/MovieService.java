@@ -27,8 +27,13 @@ public class MovieService {
     public List<Movie> findAll() {
         return movieRepository.findAll();
     }
+
     public Optional<Movie> finById(Long id) {
         return movieRepository.findById(id);
+    }
+
+    public List<Movie> findByCategory(Long categoryId) {
+        return movieRepository.findMovieByCategories(List.of(Category.builder().id(categoryId).build()));
     }
 
     private  List<Category> findCategories(List<Category> categories) {
