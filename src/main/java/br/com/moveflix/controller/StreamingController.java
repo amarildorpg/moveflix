@@ -5,6 +5,7 @@ import br.com.moveflix.controller.response.StreamingResponse;
 import br.com.moveflix.entity.Streaming;
 import br.com.moveflix.mapper.StreamingMapper;
 import br.com.moveflix.service.StreamingService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +39,7 @@ public class StreamingController {
     }
 
     @PostMapping
-    public ResponseEntity<StreamingResponse> saveCategory(@RequestBody StreamingRequest request) {
+    public ResponseEntity<StreamingResponse> saveCategory(@Valid @RequestBody StreamingRequest request) {
         Streaming savedStreaming = streamingService.save(StreamingMapper.toStreaming(request));
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")

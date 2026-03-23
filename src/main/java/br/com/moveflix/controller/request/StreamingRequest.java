@@ -1,4 +1,6 @@
 package br.com.moveflix.controller.request;
 
-public record StreamingRequest(String name ) {
+import jakarta.validation.constraints.NotEmpty;
+
+public record StreamingRequest(@NotEmpty(message = "Nome do serviço de Streaming é obrigatório")String name ) {
 }

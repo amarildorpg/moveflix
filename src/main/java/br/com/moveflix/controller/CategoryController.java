@@ -5,6 +5,7 @@ import br.com.moveflix.controller.response.CategoryResponse;
 import br.com.moveflix.entity.Category;
 import br.com.moveflix.mapper.CategoryMapper;
 import br.com.moveflix.service.CategoryService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +39,7 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<CategoryResponse> saveCategory(@RequestBody CategoryRequest request) {
+    public ResponseEntity<CategoryResponse> saveCategory(@Valid @RequestBody CategoryRequest request) {
         Category savedCategory = categoryService.saveCategory(CategoryMapper.toCategory(request));
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
