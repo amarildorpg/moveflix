@@ -18,3 +18,9 @@ spring:
 movieFlix:
   security:
     secret: "lO5qTcImQ0DvxXyo8InsytNmjjSjz4Ao+asPFRdcfEE="
+
+springdoc:
+  api-docs:
+    path: /api/api-docs
+  swagger-ui:
+    path: /swagger/index.html
